@@ -1,0 +1,43 @@
+# Load admin privileges
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+# Global settings
+yabai -m config \
+    layout bsp         \
+    top_padding     10 \
+    bottom_padding  10 \
+    left_padding    10 \
+    right_padding   10 \
+    window_gap      6  \
+    # Override padding for space 2 only
+    --space 2 top_padding    0 \
+    --space 2 bottom_padding 0 \
+    --space 2 left_padding   0 \
+    --space 2 right_padding  0 \
+    window_placement second_child \
+    active_window_opacity        1.0 \
+    normal_window_opacity        0.90 \
+    window_opacity               off \
+    # Only shadows for floating windows
+    window_shadow float
+
+# Rules
+yabai -m rule --add app='^Installer$'           manage=off
+yabai -m rule --add app='^Messages$'            manage=off
+yabai -m rule --add app='^System Information$'  manage=off
+yabai -m rule --add app='^System Settings$'     manage=off
+yabai -m rule --add app='^Finder$'              manage=off
+yabai -m rule --add title='Preferences$'        manage=off
+yabai -m rule --add app='^iTerm2$'              space=^1
+yabai -m rule --add app='^Brave.*$'             space=^2
+yabai -m rule --add app='^Obsidian$'            space=^3
+yabai -m rule --add app='^Spotify$'             space=^4
+yabai -m rule --add app='^Mail$'                space=^5
+
+# Disable animations when opening and closing windows.
+defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
+
+# Accelerated playback when adjusting the window size.
+defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
+
