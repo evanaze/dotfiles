@@ -1,6 +1,7 @@
 function epush() {
     git add .
     git commit -m "$*"
-    git pull origin main
+    git pull
     git push
 }
+
