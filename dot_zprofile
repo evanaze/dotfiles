@@ -1,0 +1,7 @@
+alias update="sudo apt update && sudo apt upgrade && sudo apt autoremove -y"
+alias connectme="tmux new-session -s vpn -d /opt/start_vpn.sh"
+alias disconnectme="tmux kill-session -t vpn"
+alias cdev="cd $HOME/Joby && code Tools/python_containers/python_development_container"
+alias mts-login='export AWS_PROFILE=di-k8susers && aws sso login'
+alias gconflicts="git diff --name-only --diff-filter=U --relative"
+
