@@ -3,6 +3,9 @@ vim.g.netrw_banner = 0
 vim.g.netrw_keepdir = 0
 vim.g.netrw_localcopydircmd = 'cp -r'
 
+-- Line numbers
+vim.g.netrw_bufsettings = 'noma nomod nu rnu nobl nowrap ro'
+
 -- Directory style
 vim.g.netrw_liststyle = 3
 
@@ -16,5 +19,5 @@ vim.g.netrw_winsize = 30
 -- vim.g.netrw_list_hide = "\(^\|\s\s\)\zs\.\S\+"
 
 -- Toggle Netrw
-vim.keymap.set("n", "<leader>pv", vim.cmd.Lex)
+vim.keymap.set("n", "<leader>pj", vim.cmd.Lex)
 
