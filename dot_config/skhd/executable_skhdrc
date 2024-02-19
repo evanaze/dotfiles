@@ -35,5 +35,5 @@ alt - f : yabai -m window --toggle zoom-fullscreen
 alt + shift - f : yabai -m window --toggle native-fullscreen
 
 # Custom keybindings
-alt - return : open -n /Applications/iTerm.app
+cmd - return : open -n /Applications/iTerm.app
 
