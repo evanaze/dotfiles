@@ -1,7 +1,7 @@
 -- define common options
 local opts = {
-    noremap = true, -- non-recursive
-    silent = true, -- do not show message
+	noremap = true, -- non-recursive
+	silent = true, -- do not show message
 }
 
 vim.g.mapleader = " "
@@ -17,6 +17,9 @@ vim.keymap.set("n", "<Leader>j", "<C-w>j", opts)
 vim.keymap.set("n", "<Leader>k", "<C-w>k", opts)
 vim.keymap.set("n", "<Leader>l", "<C-w>l", opts)
 
+-- Write buffer and close
+vim.keymap.set("n", "Wd", ":w|bd<cr>")
+
 -- Move visual lines
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -30,13 +33,13 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- Keep yanked text when pasting over
-vim.keymap.set("x", "<leader>p", '\"_dP')
+vim.keymap.set("x", "<leader>p", '"_dP')
 
 -- Leader y to yank unto system clipboard
-vim.keymap.set("n", "<leader>y", '\"+y')
-vim.keymap.set("v", "<leader>y", '\"+y')
-vim.keymap.set("n", "<leader>Y", '\"+Y')
+vim.keymap.set("n", "<leader>y", '"+y')
+vim.keymap.set("v", "<leader>y", '"+y')
+vim.keymap.set("n", "<leader>Y", '"+Y')
 
 -- Delete to null register with leader d
-vim.keymap.set("n", "<leader>d", '\"_d')
-vim.keymap.set("v", "<leader>d", '\"_d')
+vim.keymap.set("n", "<leader>d", '"_d')
+vim.keymap.set("v", "<leader>d", '"_d')
