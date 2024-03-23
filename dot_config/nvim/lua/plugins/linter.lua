@@ -3,7 +3,9 @@ return {
 	opts = {
 		linters = {
 			pylint = {
-				prepend_args = { "--max-line-length=100" },
+                condition = function(ctx)
+                    return vim.fs.find({ ".pylintrc" }, { path = ctx.filename, upward = true })[1]
+                end,
 			},
 		},
 	},
