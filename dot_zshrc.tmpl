@@ -15,16 +15,13 @@ ZSH_THEME="powerlevel10k/powerlevel10k"                            # Set theme
 DISABLE_UPDATE_PROMPT="true"                    # Auto-update
 
 # Aliases
-{{- if eq .chezmoi.hostname "cooper" }}
-alias update="brew update && brew upgrade"
-{{- else }}
 alias update="sudo apt update && sudo apt upgrade && sudo apt autoremove -y"
-{{- end}}
 alias connectme="tmux new-session -s vpn -d /opt/start_vpn.sh"
 alias disconnectme="tmux kill-session -t vpn"
 alias cdev="cd $HOME/Joby && code Tools/python_containers/python_development_container"
 alias mts-login='export AWS_PROFILE=di-k8susers && aws sso login'
 alias gconflicts="git diff --name-only --diff-filter=U --relative"
+
 
 # Exports
 export PATH="/Applications/CMake.app/Contents/bin:$PATH" # Add cmake to path
@@ -35,28 +32,19 @@ export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
 export PATH="/usr/local/bin/flutter:$PATH"
 export PATH="$PATH:/usr/local/sbin"
 export HOMEBREW_NO_ENV_HINTS="true"
-{{- if eq .chezmoi.hostname "cooper" }}
-export SDKROOT=$(xcrun -sdk macosx --show-sdk-path)
-{{- end }}
 export ZSH="$HOME/.oh-my-zsh"      # Path to OMZSH
 export EDITOR='nvim'                            # Change editor
 export VISUAL='nvim'
-
-# Plugins
-plugins=(git ssh-agent zsh-syntax-highlighting)                         # Plugins
-
-# pyenv-virtualenv
-eval "$(pyenv init -)"
-
-{{- if eq .chezmoi.hostname "lxl-25925m3" }}
-ssh-add $HOME/.ssh/personal_github
-{{- end }}
-
 ## NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Libraries
-[[ ! -f ~/.oh-my-zsh.sh ]] || source $ZSH/oh-my-zsh.sh
+# Plugins
+plugins=(git ssh-agent zsh-syntax-highlighting)                         # Plugins
+# pyenv-virtualenv
+eval "$(pyenv init -)"
+source $ZSH/oh-my-zsh.sh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

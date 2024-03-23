@@ -1,0 +1,2 @@
+ arp -na | grep -i 2c:cf:67
+
