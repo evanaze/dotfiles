@@ -1,3 +1,8 @@
+-- Formatting
+vim.g.autoformat = false
+-- Disable Python3 support
+vim.g.loaded_python3_provider = 0
+
 -- Hint: use `:h <option>` to figure out the meaning if needed
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.mouse = "a" -- allow the mouse to be used in Nvim
@@ -22,6 +27,3 @@ vim.opt.incsearch = true -- search as characters are entered
 vim.opt.hlsearch = false -- do not highlight matches
 vim.opt.ignorecase = true -- ignore case in searches by default
 vim.opt.smartcase = true -- but make it case sensitive if an uppercase is entered
-
--- Disable Python3 support
-vim.g.loaded_python3_provider = 0
