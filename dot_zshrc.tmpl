@@ -1,3 +1,4 @@
+# ZSH RC by Evan Azevedo
 eval "$(zellij setup --generate-auto-start zsh)"
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -7,7 +8,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# ZSH RC by Evan Azevedo
 fpath=(~/.zshfn "${fpath[@]}")                        # Add functions folder
 autoload -U $fpath[1]/*(.:t)                    # Autoload functions
 zstyle ':omz:update' mode auto      # update automatically without asking
@@ -15,13 +15,16 @@ ZSH_THEME="powerlevel10k/powerlevel10k"                            # Set theme
 DISABLE_UPDATE_PROMPT="true"                    # Auto-update
 
 # Aliases
+{{ if eq .chezmoi.os "darwin" }}
+alias update="brew update && brew upgrade && brew autoremove"
+{{ else }}
 alias update="sudo apt update && sudo apt upgrade && sudo apt autoremove -y"
+{{ end }}
 alias connectme="tmux new-session -s vpn -d /opt/start_vpn.sh"
 alias disconnectme="tmux kill-session -t vpn"
 alias cdev="cd $HOME/Joby && code Tools/python_containers/python_development_container"
 alias mts-login='export AWS_PROFILE=di-k8susers && aws sso login'
 alias gconflicts="git diff --name-only --diff-filter=U --relative"
-
 
 # Exports
 export PATH="/Applications/CMake.app/Contents/bin:$PATH" # Add cmake to path
