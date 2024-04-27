@@ -5,4 +5,7 @@ return {
 			autoformat = false,
 		},
 	},
+    {
+        "jghauser/follow-md-links.nvim"
+    }
 }
