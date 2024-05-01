@@ -35,6 +35,7 @@ yabai -m rule --add app='^Brave.*$'             space=^2
 yabai -m rule --add app='^Obsidian$'            space=^3
 yabai -m rule --add app='^Spotify$'             space=^4
 yabai -m rule --add app='^Mail$'                space=^5
+yabai -m rule --add app='^Sorted$'              space=^6
 
 # Disable animations when opening and closing windows.
 defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
