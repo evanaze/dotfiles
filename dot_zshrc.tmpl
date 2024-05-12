@@ -18,7 +18,7 @@ DISABLE_UPDATE_PROMPT="true"                    # Auto-update
 {{ if eq .chezmoi.os "darwin" }}
 alias update="brew update && brew upgrade && brew autoremove"
 {{ else }}
-alias update="sudo apt update && sudo apt upgrade && sudo apt autoremove -y"
+alias update="sudo nixos-rebuild switch"
 {{ end }}
 alias connectme="tmux new-session -s vpn -d /opt/start_vpn.sh"
 alias disconnectme="tmux kill-session -t vpn"
