@@ -20,6 +20,5 @@ if [ $NUM_ACTIVE_DISPLAYS -eq 2 ]; then
     yabai -m space 4 --display 2
     yabai -m space 5 --display 2
     yabai -m space 6 --display 2
-    echo "hi"
 fi
 
