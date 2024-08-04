@@ -17,7 +17,7 @@ DISABLE_UPDATE_PROMPT="true"                    # Auto-update
 {{ if eq .chezmoi.os "darwin" }}
 alias update="brew update && brew upgrade && brew autoremove"
 {{ else }}
-alias update="sudo nixos-rebuild switch --flake /etc/nixos#default"
+alias update="sudo nixos-rebuild switch"
 {{ end }}
 alias gconflicts="git diff --name-only --diff-filter=U --relative"
 alias nedit="sudo -e /etc/nixos/configuration.nix"

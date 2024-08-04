@@ -98,13 +98,18 @@
     vimAlias = true;
     vimdiffAlias = true;
     plugins = with pkgs.vimPlugins; [
+      LazyVim
       lazy-nvim
       nvim-treesitter.withAllGrammars
     ];
 
     extraLuaConfig = ''
-      vim.g.mapleader = " " -- Need to set leader before lazy for correct keybindings
+      vim.g.mapleader = " "
       require("lazy").setup({
+        spec = {
+          { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+          { import = "plugins" },
+        },
         performance = {
             reset_packpath = false,
             rtp = { reset = false }
@@ -119,4 +124,9 @@
         })
     '';
   };
+
+  xdg.configFile."nvim/lua" = {
+      recursive = true;
+      source = ./lua;
+    };
 }

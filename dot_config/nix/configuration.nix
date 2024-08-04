@@ -134,6 +134,7 @@
     meslo-lgs-nf
     neovim
     unzip
+    xclip
     wget
   ];
 
