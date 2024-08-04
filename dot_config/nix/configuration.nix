@@ -72,12 +72,6 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -110,9 +104,6 @@
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
   # Install ZSH.
   programs.zsh.enable = true;
   programs.zsh.promptInit = "
@@ -121,7 +112,10 @@
   programs.steam.enable = true;
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = ["electron-25.9.0"];
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
