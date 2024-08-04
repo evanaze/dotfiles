@@ -17,8 +17,9 @@ DISABLE_UPDATE_PROMPT="true"                    # Auto-update
 {{ if eq .chezmoi.os "darwin" }}
 alias update="brew update && brew upgrade && brew autoremove"
 {{ else }}
-alias update="sudo nixos-rebuild switch"
+alias update="pushd $HOME/.config/nix && nix flake update && popd"
 {{ end }}
+alias rebuild="sudo nixos-rebuild switch"
 alias gconflicts="git diff --name-only --diff-filter=U --relative"
 alias nedit="sudo -e /etc/nixos/configuration.nix"
 alias dmonitors="$HOME/.config/yabai/create_spaces.sh"
