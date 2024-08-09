@@ -1,6 +1,6 @@
 { config, pkgs, inputs, ... }: {
   imports = [
-    # ./kickstart.nixvim/nixvim.nix
+    ./kickstart.nixvim/nixvim.nix
   ];
 
   home.username = "evanaze";

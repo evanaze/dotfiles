@@ -16,6 +16,8 @@
     ./plugins/nvim-cmp.nix
     ./plugins/mini.nix
     ./plugins/treesitter.nix
+    ./plugins/bufferline.nix
+    ./plugins/neotree.nix
 
     # NOTE: Add/Configure additional plugins for Kickstart.nixvim
     #
@@ -25,7 +27,7 @@
     # ./plugins/kickstart/plugins/debug.nix
     # ./plugins/kickstart/plugins/indent-blankline.nix
     # ./plugins/kickstart/plugins/lint.nix
-    # ./plugins/kickstart/plugins/autopairs.nix
+    ./plugins/kickstart/plugins/autopairs.nix
     # ./plugins/kickstart/plugins/neo-tree.nix
     #
     # NOTE: Configure your own plugins `see https://nix-community.github.io/nixvim/`
@@ -88,6 +90,7 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
+    enableMan = true;
 
     # You can easily change to a different colorscheme.
     # Add your colorscheme here and enable it.
@@ -95,6 +98,9 @@
     #
     # If you want to see what colorschemes are already installed, you can use `:Telescope colorschme`.
     colorschemes = {
+      dracula = {
+        enable = true;
+      };
     };
 
     # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=globals#globals
@@ -116,9 +122,7 @@
     opts = {
       # Show line numbers
       number = true;
-      # You can also add relative line numbers, to help with jumping.
-      #  Experiment for yourself to see if you like it!
-      #relativenumber = true
+      relativenumber = true;
 
       # Enable mouse mode, can be useful for resizing splits for example!
       mouse = "a";
@@ -198,29 +202,6 @@
           desc = "Exit terminal mode";
         };
       }
-      # TIP: Disable arrow keys in normal mode
-      /*
-      {
-        mode = "n";
-        key = "<left>";
-        action = "<cmd>echo 'Use h to move!!'<CR>";
-      }
-      {
-        mode = "n";
-        key = "<right>";
-        action = "<cmd>echo 'Use l to move!!'<CR>";
-      }
-      {
-        mode = "n";
-        key = "<up>";
-        action = "<cmd>echo 'Use k to move!!'<CR>";
-      }
-      {
-        mode = "n";
-        key = "<down>";
-        action = "<cmd>echo 'Use j to move!!'<CR>";
-      }
-      */
       # Keybinds to make split navigation easier.
       #  Use CTRL+<hjkl> to switch between windows
       #
@@ -288,9 +269,9 @@
     plugins = {
       # Detect tabstop and shiftwidth automatically
       # https://nix-community.github.io/nixvim/plugins/sleuth/index.html
-      sleuth = {
-        enable = true;
-      };
+      # sleuth = {
+      #   enable = true;
+      # };
 
       # "gc" to comment visual regions/lines
       # https://nix-community.github.io/nixvim/plugins/comment/index.html
