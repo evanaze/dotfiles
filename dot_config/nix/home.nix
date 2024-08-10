@@ -1,8 +1,4 @@
 { config, pkgs, inputs, ... }: {
-  imports = [
-    ./kickstart.nixvim/nixvim.nix
-  ];
-
   home.username = "evanaze";
   home.homeDirectory = "/home/evanaze";
 
@@ -33,6 +29,7 @@
     zellij
     zsh-fast-syntax-highlighting
     zsh-powerlevel10k
+    inputs.nixvim.packages.${system}.default 
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
