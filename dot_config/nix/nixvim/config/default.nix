@@ -30,6 +30,7 @@ _: {
 
     # UI plugins
     ./plugins/ui/bufferline.nix
+    ./plugins/ui/bufdelete.nix
     ./plugins/ui/lualine.nix
     ./plugins/ui/startup.nix
 
