@@ -1,7 +1,7 @@
 _: {
   plugins.luasnip = {
     enable = true;
-    settings = {
+    extraConfig = {
       enable_autosnippets = true;
       store_selection_keys = "<Tab>";
     };

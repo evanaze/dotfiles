@@ -1,14 +1,10 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, inputs, ... }:
-
-{
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+{pkgs, ...}: {
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -17,7 +13,7 @@
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -58,8 +54,8 @@
   };
 
   # Enable the NVIDIA driver.
-  services.xserver.videoDrivers = [ "nvidia" ];
-  
+  services.xserver.videoDrivers = ["nvidia"];
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -81,7 +77,7 @@
   users.users.evanaze = {
     isNormalUser = true;
     description = "Evan Azevedo";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     shell = pkgs.zsh;
   };
 
@@ -90,14 +86,16 @@
   services.xserver.displayManager.autoLogin.user = "evanaze";
 
   # Enale sudo with no password for user
-  security.sudo.extraRules= [
-  {  users = [ "evanaze" ];
-    commands = [
-       { command = "ALL" ;
-         options= [ "NOPASSWD" ];
-      }
-    ];
-  }
+  security.sudo.extraRules = [
+    {
+      users = ["evanaze"];
+      commands = [
+        {
+          command = "ALL";
+          options = ["NOPASSWD"];
+        }
+      ];
+    }
   ];
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
@@ -151,12 +149,5 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.11"; # Did you read the comment?
-
+  system.stateVersion = "23.11";
 }

@@ -321,11 +321,11 @@ theme "tokyo-night"
 // that will be used by default if this option is not set.
 // Examples:
 //
-// copy_command "xclip -selection clipboard" // x11
+// copy_command "wl-copy"                    // wayland
 {{ if eq .chezmoi.os "darwin" }}
 copy_command "pbcopy"                     // osx
 {{ else }}
-//copy_command "wl-copy"                    // wayland
+copy_command "xclip -selection clipboard" // x11
 {{ end }}
 
 // Choose the destination for copied text
