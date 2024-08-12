@@ -14,27 +14,15 @@ ZSH_THEME="powerlevel10k/powerlevel10k"                            # Set theme
 DISABLE_UPDATE_PROMPT="true"                    # Auto-update
 
 # Aliases
-{{ if eq .chezmoi.os "darwin" }}
-alias update="brew update && brew upgrade && brew autoremove"
-{{ else }}
+
 alias update="pushd $HOME/.config/nix && nix flake update && popd"
-{{ end }}
+
 alias rebuild="sudo nixos-rebuild switch"
 alias gconflicts="git diff --name-only --diff-filter=U --relative"
 alias nedit="sudo -e /etc/nixos/configuration.nix"
 alias cedit="chezmoi edit --apply"
 alias dmonitors="$HOME/.config/yabai/create_spaces.sh"
 
-# Exports
-export PATH="/Applications/CMake.app/Contents/bin:$PATH" # Add cmake to path
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
-export PATH="/usr/local/bin/flutter:$PATH"
-export PATH="$PATH:/usr/local/sbin"
-export PATH="$PATH:$HOME/go/bin"
-export HOMEBREW_NO_ENV_HINTS="true"
-export EDITOR='nvim'                            # Change editor
-export VISUAL='nvim'
 ## NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm

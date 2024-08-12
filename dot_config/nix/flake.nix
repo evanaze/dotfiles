@@ -7,7 +7,7 @@
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixvim.url = "./nixvim";
+    nixvim.url = "./home/nixvim";
   };
 
   outputs = inputs @ {
@@ -23,14 +23,14 @@
       nixos = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          ./configuration.nix
+          ./hosts/desktop/default.nix
 
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {inherit inputs;};
-            home-manager.users.evanaze = import ./home.nix;
+            home-manager.users.evanaze = import ./home/home.nix;
           }
         ];
       };

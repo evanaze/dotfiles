@@ -1,0 +1,8 @@
+# Exports
+export PATH="/Applications/CMake.app/Contents/bin:$PATH" # Add cmake to path
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="/usr/local/opt/sphinx-doc/bin:$PATH"
+export PATH="/usr/local/bin/flutter:$PATH"
+export PATH="$PATH:/usr/local/sbin"
+export PATH="$PATH:$HOME/go/bin"
+
