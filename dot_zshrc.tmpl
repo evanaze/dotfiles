@@ -14,12 +14,12 @@ ZSH_THEME="powerlevel10k/powerlevel10k"                            # Set theme
 DISABLE_UPDATE_PROMPT="true"                    # Auto-update
 
 # Aliases
-{{ if eq .chezmoi.os "darwin" }}
-alias update="brew update && brew upgrade && brew autoremove"
-{{ else }}
 alias update="pushd $HOME/.config/nix && nix flake update && popd"
+{{ if eq .chezmoi.os "darwin" }}
+alias rebuild="darwin-rebuild switch --flake /etc/nix#macos"
+{{ else }}
+alias rebuild="sudo nixos-rebuild switch --flake /etc/nixos#nixos"
 {{ end }}
-alias rebuild="sudo nixos-rebuild switch"
 alias gconflicts="git diff --name-only --diff-filter=U --relative"
 alias nedit="sudo -e /etc/nixos/configuration.nix"
 alias cedit="chezmoi edit --apply"
