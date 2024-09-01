@@ -8,20 +8,24 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixvim.url = "./home/nixvim";
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
     self,
     nixpkgs,
     home-manager,
+    nix-darwin,
     nixvim,
     ...
-  }: let
-    system = "x86_64-linux";
-  in {
+  }:
+  {
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
-        inherit system;
+        system = "x86_64-linux";
         modules = [
           ./hosts/desktop/default.nix
 
@@ -34,6 +38,21 @@
           }
         ];
       };
+    };
+
+    darwinConfigurations = {
+        cooper = nix-darwin.lib.darwinSystem {
+        system = "x86_64-darwin";
+        modules = [
+            ./hosts/mac/default.nix
+
+            home-manager.darwinModules.home-manager
+            {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+            }
+        ];
+        };
     };
   };
 }
